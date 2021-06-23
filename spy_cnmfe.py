@@ -11,15 +11,13 @@ import os
 # import matplotlib.pyplot as plt
 import pandas as pd
 
-#%%
+#%% Current Dir ... 
 print(os.getcwd())
 
-
 #%% CD into Movies folder
-print("Current dir: ", os.getcwd(), "\nChanging dir...")
-os.chdir("C:\\Users\\wmf2107\\caiman_data\\Aditya\\Movies")
-print("CWD changed to: ", os.getcwd())
-
+# print("Current dir: ", os.getcwd(), "\nChanging dir...")
+# os.chdir("C:\\Users\\wmf2107\\caiman_data\\Aditya\\Movies")
+# print("CWD changed to: ", os.getcwd())
 
 #%% Stop cluster if one already exists. Start a new cluster.
 if 'dview' in locals():
