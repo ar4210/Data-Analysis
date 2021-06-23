@@ -4,6 +4,7 @@ import caiman as cm
 from caiman.source_extraction import cnmf
 from caiman.utils.visualization import inspect_correlation_pnr
 from caiman.source_extraction.cnmf import params as params
+import pickle
 
 import os
 # import numpy as np
@@ -174,13 +175,10 @@ estimates_coord.to_csv(path_or_buf = f"C:\\Users\\wmf2107\\caiman_data\\Aditya\\
 #%% To print/access one column of a DataFrame
 print(estimates_coord["CoM"])
 
-#%%
-import pickle
-
+#%% Save estimates object in a pickle file
 with open('estimates.pickle', 'wb') as estimates_object_file:
     pickle.dump(estimates_object, estimates_object_file)
     
-#%%
-
+#%% Load estimates object to another variable from a pickle file
 with open('estimates.pickle', 'rb') as estimates_object_file:
     estimates_object_2 = pickle.load(estimates_object_file)
