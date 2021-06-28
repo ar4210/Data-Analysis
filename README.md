@@ -21,6 +21,10 @@ Collection of python and ipynb scripts used for data analysis
   2. Open a new instance of terminal, i.e. one that is connected to your machine instead of the server, and enter the following: $ ssh -N -f -L localhost:8080:localhost:8080 <your_uni>@<remote_server>
   3. Open an instance of your favorite web browser, and check the terminal window connected to the remote server for a url for Jupyter Notebooks and enter that into your window.
   4. If successful, you should be able to see the files that are stored under your user in the remote server. You should also be able to run notebooks from here, which will execute on the remote clusters.
+
+  # CNMF_E.py
+  - Same as the .ipynb, except this uses a command line argument for the file name being processed. Once the notebook is fully finished, we can use this file to run the entire CNMFE algorithm without having to run each cell individually.
+
   
   # spy_cnmfe.py
   - Essentially the same thing as CNMF_E.ipynb except it is a .py file. We originally ran this file in spyder IDE, where we had easy access to variables and objects that were created during the running of the script i.e. the estimates object. Also, this file includes the pickle package, which allows us to save python objects locally as files.
