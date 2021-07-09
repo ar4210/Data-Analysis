@@ -30,4 +30,8 @@ Collection of python and ipynb scripts used for data analysis
   - Essentially the same thing as CNMF_E.ipynb except it is a .py file. We originally ran this file in spyder IDE, where we had easy access to variables and objects that were created during the running of the script i.e. the estimates object. Also, this file includes the pickle package, which allows us to save python objects locally as files.
 
 
+  # How to install MATLAB on VM
+  - Working on it....
+
+
 
