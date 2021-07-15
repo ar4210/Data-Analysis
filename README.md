@@ -59,16 +59,16 @@ Collection of python and ipynb scripts used for data analysis
     - Run " ./install " and a Matlab installation window should appear.
     
   5. Go through the installation process
-    - The installation will ask you where you want the installation to happen. You can probably do the default location, but I specified my home directory /home/ar4210 for ease of access. 
-    - After this window, it might tell you that there isn't enough space on your disk, and the location is /tmp . Email rc@zi.columbia.edu and tell them you need to increase your /tmp partition.
-    - The installation will also ask you to specify the directory where you placed your activation code  (.lic file)
+    The installation will ask you where you want the installation to happen. You can probably do the default location, but I specified my home directory /home/ar4210 for ease of access.<br/>
+    After this window, it might tell you that there isn't enough space on your disk, and the location is /tmp . Email rc@zi.columbia.edu and tell them you need to increase your /tmp partition.<br/>
+    The installation will also ask you to specify the directory where you placed your activation code  (.lic file)
   
   6. Open the MATLAB application
-    - If all went well, you should now be able to go into your terminal and cd into the directory where you said you wanted to place the MATLAB installation, however, you also want to cd into the bin of that directory.
-    - For example, in my case I would run the following command:
-    cd /home/ar4210/bin
-    ./matlab
-    - The first time I tried it I had some weird graphical glitch where parts of the screen went black. If this is the case just log out of the X2Go client, log back in, and try this step again.
+    If all went well, you should now be able to go into your terminal and cd into the directory where you said you wanted to place the MATLAB installation, however, you also want to cd into the bin of that directory.<br/>
+    For example, in my case I would run the following command:<br/>
+    cd /home/ar4210/bin<br/>
+    ./matlab<br/>
+    The first time I tried it I had some weird graphical glitch where parts of the screen went black. If this is the case just log out of the X2Go client, log back in, and try this step again.
     
 
 
