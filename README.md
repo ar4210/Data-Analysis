@@ -31,7 +31,14 @@ Collection of python and ipynb scripts used for data analysis
 
 
   # How to install MATLAB on VM
-  - Working on it....
+  - This process is annoying but definitely possible...
+  - Follow this guide ( https://confluence.columbia.edu/confluence/display/zmbbi/Installing+MATLAB+on+your+Cortex+VM )
+  1. Create a Mathworks account. ( https://www.mathworks.com/mwaccount/register )
+    - After filling out the info in step 2, you will hit "Create" and will be asked to sign in via your institution. DO NOT CLICK ON THAT BIG BLUE BUTTON !!!
+    - Instead, click on the link below it in the fine print, it will allow you to sign in separately. The idea is that you want to create an account through        Zuckerman, not Columbia. I know, it's dumb.
+    - When filling this next page out, it will ask you for an activation key. Go to [this](https://internal.zi.columbia.edu/sites/default/files/content/zi_matlab_concurrent.txt) website and save it as a ".lic" file.
+  2. 
+  3. 
 
 
 
