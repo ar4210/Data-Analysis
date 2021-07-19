@@ -1,11 +1,11 @@
 # Data-Analysis
 Collection of python and ipynb scripts used for data analysis
 
-  # align_behavior_and_imaging.py
+###align_behavior_and_imaging.py
   - Align collected behavioral data of mouse to neuron calcium imaging data
   - Compared to original data analysis, mine uses floating point zeroes as opposed to integer zeroes.
   
-  # CNMF_E.ipynb
+###CNMF_E.ipynb
   - Jupyter NB script that uses the CaImAn package to perform CNMFE analysis on imaging data that has already been pre processed by Inscopix software.
     - This script will be run using a secure remote server. Instructions for doing so will be included below when it has been set up. 
   
@@ -22,21 +22,21 @@ Collection of python and ipynb scripts used for data analysis
   3. Open an instance of your favorite web browser, and check the terminal window connected to the remote server for a url for Jupyter Notebooks and enter that into your window.
   4. If successful, you should be able to see the files that are stored under your user in the remote server. You should also be able to run notebooks from here, which will execute on the remote clusters.
 
-  # CNMF_E.py
+###CNMF_E.py
   - Same as the .ipynb, except this uses a command line argument for the file name being processed. Once the notebook is fully finished, we can use this file to run the entire CNMFE algorithm without having to run each cell individually.
 
   
-  # spy_cnmfe.py
+### spy_cnmfe.py
   - Essentially the same thing as CNMF_E.ipynb except it is a .py file. We originally ran this file in spyder IDE, where we had easy access to variables and objects that were created during the running of the script i.e. the estimates object. Also, this file includes the pickle package, which allows us to save python objects locally as files.
 
 
-  # How to install MATLAB on VM
+### How to install MATLAB on VM
   - This process is annoying but definitely possible...
-  - Follow this guide ( https://confluence.columbia.edu/confluence/display/zmbbi/Installing+MATLAB+on+your+Cortex+VM )
-  1. Create a Mathworks account. ( https://www.mathworks.com/mwaccount/register )<br/>
+  - Follow this guide (https://confluence.columbia.edu/confluence/display/zmbbi/Installing+MATLAB+on+your+Cortex+VM)
+  1. Create a Mathworks account. (https://www.mathworks.com/mwaccount/register)<br/>
     - After filling out the info in step 2, you will hit "Create" and will be asked to sign in via your institution. DO NOT CLICK ON THAT BIG BLUE BUTTON !!!<br/>
-    - Instead, click on the link below it in the fine print, it will allow you to sign in separately. The idea is that you want to create an account through        Zuckerman, not Columbia. I know, it's dumb.<br/>
-    - When filling this next page out, it will ask you for an activation key. Go to [this](https://internal.zi.columbia.edu/sites/default/files/content/zi_matlab_concurrent.txt) website and under where it says "License Activation Key (for association):" you will copy the activation key and paste it into the MathWorks sign up page. Also, save this webpage as a ".lic" file, you'll need it later.<br/>
+    - Instead, click on the link below it in the fine print, it will allow you to sign in separately. The idea is that you want to create an account through        Zuckerman, not Columbia.<br/>
+    - When filling this next page out, it will ask you for an activation key. Go to [this](https://internal.zi.columbia.edu/sites/default/files/content/zi_matlab_concurrent.txt) link and under where it says "License Activation Key (for association):" you will copy the activation key and paste it into the MathWorks sign up page. Also, save this webpage as a ".lic" file, you'll need it later.<br/>
     - Complete the account registration and verify your email, etc.<br/>
   
   2. Download the X2Go Client and the MATE GUI software on the confluence link from step 1. This step is pretty straightforward, though note that the webpages you download them from do look a bit sketchy. Otherwise, the confluence link does a decent job of explaining how to set it up.<br/>
