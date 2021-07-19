@@ -1,11 +1,11 @@
 # Data-Analysis
 Collection of python and ipynb scripts used for data analysis
 
-###align_behavior_and_imaging.py
+### align_behavior_and_imaging.py
   - Align collected behavioral data of mouse to neuron calcium imaging data
   - Compared to original data analysis, mine uses floating point zeroes as opposed to integer zeroes.
   
-###CNMF_E.ipynb
+### CNMF_E.ipynb
   - Jupyter NB script that uses the CaImAn package to perform CNMFE analysis on imaging data that has already been pre processed by Inscopix software.
     - This script will be run using a secure remote server. Instructions for doing so will be included below when it has been set up. 
   
@@ -22,7 +22,7 @@ Collection of python and ipynb scripts used for data analysis
   3. Open an instance of your favorite web browser, and check the terminal window connected to the remote server for a url for Jupyter Notebooks and enter that into your window.
   4. If successful, you should be able to see the files that are stored under your user in the remote server. You should also be able to run notebooks from here, which will execute on the remote clusters.
 
-###CNMF_E.py
+### CNMF_E.py
   - Same as the .ipynb, except this uses a command line argument for the file name being processed. Once the notebook is fully finished, we can use this file to run the entire CNMFE algorithm without having to run each cell individually.
 
   
