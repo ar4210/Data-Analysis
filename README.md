@@ -6,8 +6,8 @@ Collection of python and ipynb scripts used for data analysis
   * Compared to original data analysis, mine uses floating point zeroes as opposed to integer zeroes.
   
 ### CNMF_E.ipynb
-  * Jupyter NB script that uses the CaImAn package to perform CNMFE analysis on imaging data that has already been pre processed by Inscopix software.
-    * This script will be run using a secure remote server. Instructions for doing so will be included below when it has been set up. 
+  * Jupyter NB script that uses the CaImAn package to perform Motion Correction and CNMFE analysis on imaging data.
+    * This script will be run using an ssh server. Instructions for doing so will be included below when it has been set up. 
   
   IF YOU DO NOT HAVE ANACONDA INSTALLED:
   1. Log into ssh server using $ssh <your_uni>@<remote_server>
