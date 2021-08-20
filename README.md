@@ -31,6 +31,7 @@ Collection of python and ipynb scripts used for data analysis
 
 
 ### How to install MATLAB on VM
+  - This is a rough walkthrough about how to edit MATLAB scripts while working on a remote server.
   - Follow this guide (https://confluence.columbia.edu/confluence/display/zmbbi/Installing+MATLAB+on+your+Cortex+VM)
   1. Create a Mathworks account. (https://www.mathworks.com/mwaccount/register)<br/>
     * After filling out the info in step 2, you will hit "Create" and will be asked to sign in via your institution. DO NOT CLICK ON THAT BIG BLUE BUTTON !!!<br/>
