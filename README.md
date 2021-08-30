@@ -38,6 +38,7 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
 
 
 ### How to install MATLAB on VM
+  - **I used MATLAB on the VM in order to run NoRMCorre Motion Correction, but have since switched to CaImAn NoRMCorre using Python.**
   - This is a rough walkthrough about how to edit MATLAB scripts while working on a remote server.
   - Follow this guide (https://confluence.columbia.edu/confluence/display/zmbbi/Installing+MATLAB+on+your+Cortex+VM)
   1. Create a Mathworks account. (https://www.mathworks.com/mwaccount/register)<br/>
