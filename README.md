@@ -22,7 +22,7 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   
 ### pipeline_CNMFE.py
   * Main pipeline for motion correction and cnmfE analysis of 1p data. File can be run from the command line, and will take path to data as command line arguments. Can also run multiple files at once, and will ouput a pickle that can later be used for multisession registration across days.
-  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. Removing the variable altogether will allow other filetypes to work.
+  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. Removing the variable altogether will allow tif/tiff filetypes to work.
   * See [CaImAn github](https://github.com/flatironinstitute/CaImAn) for details on the package and full paper.
 
 ### CNMF_E.ipynb
