@@ -25,6 +25,14 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. Removing the variable altogether will allow tif/tiff filetypes to work.
   * See [CaImAn github](https://github.com/flatironinstitute/CaImAn) for details on the package and full paper.
 
+### multisession_registration_prep.py
+  * Iterates through every recording under the mouse ID and returns a pickle file that is used for main multisession registration script.
+
+### multisession_registration.py
+  * Main multisession registration script. Aligns calcium imaging data across days and returns a list of coordinates with center of mass, contour plot coordinates and bounding box for each component.
+
+
+
 ### CNMF_E.ipynb
   * Jupyter NB script that uses the CaImAn package to perform Motion Correction and CNMFE analysis on imaging data.
     * This script will be run using an ssh server. Instructions for doing so included above. 
@@ -35,6 +43,8 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   
 ### spy_cnmfe.py
   - Essentially the same thing as CNMF_E.ipynb except it is a .py file. We originally ran this file in spyder IDE, where we had easy access to variables and objects that were created during the running of the script i.e. the estimates object. Also, this file includes the pickle package, which allows us to save python objects locally as files.
+
+
 
 
 ### How to install MATLAB on VM
