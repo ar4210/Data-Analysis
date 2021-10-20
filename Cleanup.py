@@ -3,6 +3,9 @@
 
 '''
 Simple Script to automatically run once a week to find and delete memmaps generated from CaImAn Motion Correction / CNMF(E)
+This script runs every Sunday at midnight. If you would like to disable this, see cronjobs in virtual machine
+    $ crontab -e
+and comment out or rewrite cronjob.
 
 Will search "/home/ar4210/engram/anole/Mouse/Inscopix_Data" and all subdirectories by default. Change Cleanup.base to modify path.
 
