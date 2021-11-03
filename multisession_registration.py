@@ -16,6 +16,7 @@ from caiman.utils.utils import download_demo
 from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
+from scipy import sparse
 from pathlib import Path
 import os
 import sys
@@ -27,10 +28,14 @@ import sys
 # 
 # or construct a list of spatial footprints and templates and use that to perform the registration as shown below.
 
-
 # Load multisession data (spatial components and mean intensity templates) (should be replaced by actual data)
 
-# file_path = download_demo('alignment.pickle')
+
+# Example command line argument
+# python ar4210_data_analysis/CaImAn-master/aditya/multisession_registration.py "/home/ar4210/engram/Mouse/New_Analysis_Pipeline_Test/Test_Data/Python_Scripts_and_Data/Pickles/wfC406_test/wfC406_test_20211101_132717_multisession_registration.pkl"
+
+
+
 file_path = sys.argv[1] # path to multisession file prepped by multisession_registration_prep.py
 infile = open(file_path,'rb')
 data = pickle.load(infile)
@@ -55,9 +60,13 @@ Lists inside of a tuple
 '''
 
 
-print("\nPixels x Total Components")
-for i in range( 1:len(data[0])+1 ):
-    print(f"    Session {i}: {data[0][i].shape}")
+print("\nSession number: Total Components")
+for i in range( 0,len(data[0]) ):
+    print(f"    Session {i}: {data[0][i].shape[1]}")
+    
+# print("\nSession number: Accepted Components")
+# for i in range( 0,len(data[0]) ):
+#     print(f"    Session{i}: {len(data[2][i].idx_components)}")
 
 
 # spatial = data[0] # list of estimates.A's for each session
@@ -74,6 +83,7 @@ dims = templates[0].shape
 print("\n")
 print(f"Number of sessions: {len(data[0])}") # num of sessions
 print(f"Template pixels: {data[1][0].shape}") # template pixels
+print("\n")
 
 
 # ## Use `register_multisession()`
@@ -87,6 +97,7 @@ print(f"Template pixels: {data[1][0].shape}") # template pixels
 spatial_union, assignments, matchings = register_multisession(A=spatial, dims=dims, templates=templates)
 
 
+
 # The function returns 3 variables for further analysis:
 # - `spatial_union`: csc_matrix (# pixels X # total distinct components), the union of all ROIs across all sessions aligned to the FOV of the last session.
 # - `assignments`: ndarray (# total distinct components X # sessions). `assignments[i,j]=k` means that component `k` from session `j` has been identified as component `i` from the union of all components, otherwise it takes a `NaN` value. Note that for each `i` there is at least one session index `j` where `assignments[i,j]!=NaN`.
@@ -98,7 +109,8 @@ spatial_union, assignments, matchings = register_multisession(A=spatial, dims=di
 
 
 # Filter components by number of sessions the component could be found
-n_reg = 8 # minimal number of sessions that each component has to be registered in
+n_reg = len(data[0]) # minimal number of sessions that each component has to be registered in
+print(f"\nmin # of sessions each component must be registered in (default = all sessions) = {n_reg} \n")
 
 # Use number of non-NaNs in each row to filter out components that were not registered in enough sessions
 assignments_filtered = np.array(np.nan_to_num(assignments[np.sum(~np.isnan(assignments), axis=1) >= n_reg]), dtype=int);
@@ -110,10 +122,13 @@ spatial_filtered = spatial[0][:, assignments_filtered[:,0]]
 # Plot spatial components of the selected components on the template of the last session
 
 coordinates = visualization.plot_contours(spatial_filtered, templates[-1]);
-print(spatial_filtered.shape)
 
-coordinates_df = pd.DataFrame(coordinates)
-coordinates_df.to_csv(f"{save_dir}/coordinates_{leaf}.csv")
+
+pd.DataFrame(coordinates).to_csv(f"{save_dir}/coordinates_{leaf}.csv")
+pd.DataFrame(assignments).to_csv(f"{save_dir}/assignments_{leaf}.csv")
+pd.DataFrame(matchings).to_csv(f"{save_dir}/matchings_{leaf}.csv")
+pd.DataFrame(spatial_union).to_csv(f"{save_dir}/spatial_union_{leaf}.csv")
+
 
 
 # ## Combining data of components over multiple sessions
@@ -125,7 +140,11 @@ coordinates_df.to_csv(f"{save_dir}/coordinates_{leaf}.csv")
 # Note: This notebook does not include the traces of the extracted neurons, only their spatial components. As such the loop below will produce an error. However, it demonstrates how to use the results of the registration to in your own analysis to extract the traces of the same neurons across different sessions.
 
 
-print(spatial_filtered.shape)
+print(f"spatial union shape: {spatial_union.shape}")
+print(f"matchings shape: ({len(matchings)})")
+print(f"assignments shape: {assignments.shape}")
+print("\n")
+print('''ASSIGNMENTS:\n    Input: known spatial union component and session number\n    Output: Component from that session\nMATCHINGS:\n    Input: Component number and session number\n    Output: Coresponding spatial union component''')
 
 
 # Now we have the array `traces`, where element `traces[i,j] = k` is the temporal component of neuron `i` at session `j`. This can be performed with `F_dff` data or `S` spikes as well.
