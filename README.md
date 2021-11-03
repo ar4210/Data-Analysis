@@ -10,7 +10,7 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
 
   FOR ACCESSING JUPYTER NOTEBOOKS ON YOUR REMOTE SERVER FROM YOUR LOCAL MACHINE:
   0. If on Windows machine, follow tutorial [here](https://itsfoss.com/install-bash-on-windows/) to use linux terminal on Windows.
-  1. While logged into your server, type in the following: $ jupyter notebook --no-browser --port=8080
+  1. While logged into your server, type in the following: $ jupyter notebook --no-browser --port=8080 --NotebookApp.iopub_data_rate_limit=1.0e10
   2. Open a new instance of terminal, i.e. one that is connected to your machine instead of the server, and enter the following: $ ssh -N -f -L localhost:8080:localhost:8080 <your_uni>@<remote_server>
       1. If you receive an error message saying the port is in use, or are otherwise unable to access it, try running $ pgrep ssh and $ killall ssh. This will log you out of all ssh entry points and you will have to log back in, but port 8080 should now be open.
   4. Open an instance of your favorite web browser, and check the terminal window connected to the remote server for a url for Jupyter Notebooks and enter that into your window.
