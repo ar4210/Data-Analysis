@@ -62,7 +62,7 @@ Lists inside of a tuple
 
 print("\nSession number: Total Components")
 for i in range( 0,len(data[0]) ):
-    print(f"    Session {i}: {data[0][i].shape[1]}")
+    print(f"    Session {i+1} ({data[2][i].mouse_id}, {data[2][i].file_name}): {data[0][i].shape[1]}")
     
 # print("\nSession number: Accepted Components")
 # for i in range( 0,len(data[0]) ):
@@ -128,7 +128,6 @@ pd.DataFrame(coordinates).to_csv(f"{save_dir}/coordinates_{leaf}.csv")
 pd.DataFrame(assignments).to_csv(f"{save_dir}/assignments_{leaf}.csv")
 pd.DataFrame(matchings).to_csv(f"{save_dir}/matchings_{leaf}.csv")
 pd.DataFrame(spatial_union).to_csv(f"{save_dir}/spatial_union_{leaf}.csv")
-
 
 
 # ## Combining data of components over multiple sessions

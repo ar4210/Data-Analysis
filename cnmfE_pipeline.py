@@ -265,7 +265,7 @@ def main(file):
     date = now.strftime("%Y%m%d")
     
     LOGFILE = open("/home/ar4210/engram/Mouse/CNMFE_testing.txt", "a")
-    LOGFILE.write(f"Beginning CNMFE on {mouse_id}, {fstem} now: {date}, {ctime}\n")
+    LOGFILE.write(f"Beginning CNMFE on {mouse_id}, {fstem} now: {ctime}\n")
 
 # %% RUN CNMF ON PATCHES
     cnm = cnmf.CNMF(n_processes=n_processes, dview=dview, Ain=Ain, params=opts)
@@ -336,16 +336,15 @@ def main(file):
     LOGFILE.write(f"REJECTED COMPONENTS: {len(cnm.estimates.idx_components_bad)}\n")
     
     LOGFILE.write(f"END CNMFE {fstem} \n\n")
-
-
-# %% STOP SERVER
-    cm.stop_server(dview=dview)
     
     
 # %% SAVE FILES
     now = datetime.datetime.now()
     ctime = now.strftime("%Y%m%d_%H%M%S")
     date = now.strftime("%Y%m%d")
+    
+    cnm.estimates.file_name = fstem
+    cnm.estimates.mouse_name = mouse_id
         
     os.makedirs(f"{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}", exist_ok = True)
 
@@ -361,6 +360,9 @@ def main(file):
     pd.DataFrame(cnm.estimates.S).to_csv(f"{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}/{fstem}_SPIKES.csv")
     pd.DataFrame(cnm.estimates.C).to_csv(f"{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}/{fstem}_TRACES.csv")
     pd.DataFrame(cnm.estimates.coordinates).to_csv(f"{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}/{fstem}_CONTOURS.csv")
+    
+    # %% STOP SERVER
+    cm.stop_server(dview=dview)
     
     end = time.time()
     prettify_time(start, end, ffull)

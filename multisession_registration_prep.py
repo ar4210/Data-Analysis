@@ -34,7 +34,7 @@ def prep_multisession_registration():
 
     '''
     mouse_id_dir = sys.argv[1]
-    print(mouse_id_dir)
+    print(f"\n{mouse_id_dir}")
     assert len(sys.argv) == 2, "Please provide path to mouse recordings."
     assert os.path.exists(mouse_id_dir), "MouseID directory does not exist. Check spelling and location."
     print(f"MouseID directory {os.path.basename(mouse_id_dir)} found.")
@@ -45,10 +45,10 @@ def prep_multisession_registration():
 
     sp_footprints_master = []
     corr_img_master = []
-#     estimates_master = []
+    estimates_master = []
 
 
-    print(f"Iterating through {mouse_id} recordings... Extracting Spatial Footprints and Correlation Images.\n")
+    print(f"Iterating through {mouse_id} recordings... Extracting Spatial Footprints, Correlation Images, and Estimates Objects.\n")
     
     for i in os.listdir(mouse_id_dir):
         if os.path.exists(f"{mouse_id_dir}/{i}") and os.path.isdir(f"{mouse_id_dir}/{i}"):
@@ -64,18 +64,18 @@ def prep_multisession_registration():
                             with open(f"{mouse_id_dir}/{i}/{j}/{k}", "rb") as correlation_img:
                                 corr_img = p.load(correlation_img)
                             corr_img_master.append(corr_img)
-#                         elif 'ESTIMATES' in k:
-#                             with open(f"{mouse_id_dir}/{i}/{j}/{k}", "rb") as estimates:
-#                                 estims = p.load(estimates)
-#                             estimates_master.append(estims)
+                        elif 'estimates' in k:
+                            with open(f"{mouse_id_dir}/{i}/{j}/{k}", "rb") as estimates:
+                                estims = p.load(estimates)
+                            estimates_master.append(estims)
                             
-#     print(f"sp: {len(sp_footprints_master)}\nci: {len(corr_img_master)}\nem: {len(estimates_master)}")
+    print(f"sp: {len(sp_footprints_master)}\nci: {len(corr_img_master)}\nem: {len(estimates_master)}")
     # Check to make sure footprints and images were added to lists
     if len(sp_footprints_master) > 0 and len(corr_img_master) > 0: # and len(estimates_master) > 0:
         now = datetime.datetime.now()
         ctime = now.strftime("%Y%m%d_%H%M%S")
 
-        footprints_ci_estimates = (sp_footprints_master, corr_img_master)#, estimates_master)
+        footprints_ci_estimates = (sp_footprints_master, corr_img_master, estimates_master)
         with open(f"{mouse_id_dir}/{mouse_id}_{ctime}_multisession_registration.pkl", "wb") as tmp:
             p.dump(footprints_ci_estimates, tmp)
 
