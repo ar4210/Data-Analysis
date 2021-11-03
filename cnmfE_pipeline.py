@@ -356,7 +356,7 @@ def main(file):
     with open(f"{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}/{fstem}_correlation_img.pkl", "wb") as tmp:
         pickle.dump(cn_filter, tmp)
     
-#     print(f"{fstem} estimates object saved: \033[1m{pickles}/{mouse_id}/{recording_id}/{fstem}/{fstem}_ESTIMATES_{ctime}.pkl\033[0m \n")
+    print(f"{fstem} estimates object saved: \033[1m{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}/{fstem}_estimates.pkl\033[0m \n")
         
     pd.DataFrame(cnm.estimates.S).to_csv(f"{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}/{fstem}_SPIKES.csv")
     pd.DataFrame(cnm.estimates.C).to_csv(f"{pickles}/{mouse_id}/{recording_id}/{date}_{fstem}/{fstem}_TRACES.csv")
