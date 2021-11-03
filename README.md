@@ -20,9 +20,9 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   * Align collected behavioral data of mouse to neuron calcium imaging data
   * Compared to original data analysis, mine uses floating point zeroes as opposed to integer zeroes.
   
-### pipeline_CNMFE.py
+### cnmfe_pipeline.py
   * Main pipeline for motion correction and cnmfE analysis of 1p data. File can be run from the command line, and will take path to data as command line arguments. Can also run multiple files at once, and will ouput a pickle that can later be used for multisession registration across days.
-  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. Removing the variable altogether will allow tif/tiff filetypes to work.
+  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. For other file types, edit var_name_hdf5 variable.
   * See [CaImAn github](https://github.com/flatironinstitute/CaImAn) for details on the package and full paper.
 
 ### multisession_registration_prep.py
@@ -30,19 +30,6 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
 
 ### multisession_registration.py
   * Main multisession registration script. Aligns calcium imaging data across days and returns a list of coordinates with center of mass, contour plot coordinates and bounding box for each component.
-
-
-
-### CNMF_E.ipynb
-  * Jupyter NB script that uses the CaImAn package to perform Motion Correction and CNMFE analysis on imaging data.
-    * This script will be run using an ssh server. Instructions for doing so included above. 
-
-### CNMF_E.py
-  - Same as the .ipynb, except this uses a command line argument for the file name being processed. Once the notebook is fully finished, we can use this file to run the entire CNMFE algorithm without having to run each cell individually.
-
-  
-### spy_cnmfe.py
-  - Essentially the same thing as CNMF_E.ipynb except it is a .py file. We originally ran this file in spyder IDE, where we had easy access to variables and objects that were created during the running of the script i.e. the estimates object. Also, this file includes the pickle package, which allows us to save python objects locally as files.
 
 
 
