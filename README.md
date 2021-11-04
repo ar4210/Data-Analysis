@@ -18,7 +18,7 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
 
   FOR MOUNTING ENGRAM SHARES ON VM:
   $ sudo /sbin/mount.cifs --verbose -o vers=2.1,user=<YOUR_UNI>,domain=adcu.columbia.edu,uid=$(id -u),forceuid,gid=$(id -g),forcegid,file_mode=0755,dir_mode=0755,rw,noacl //locker-smb.engram.rc.zi.columbia.edu/axel-locker /home/$(id -un)/engram
-  *Make sure to input your actual UNI
+  <\br>**Make sure to input your actual UNI
 
 ### align_behavior_and_imaging.py
   * Align collected behavioral data of mouse to neuron calcium imaging data
