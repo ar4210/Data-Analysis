@@ -17,7 +17,7 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   5. If successful, you should be able to see the files that are stored under your user in the remote server. You should also be able to run notebooks from here, which will execute on the remote clusters.
 
   FOR MOUNTING ENGRAM SHARES ON VM:
-  $ sudo /sbin/mount.cifs --verbose -o vers=2.1,user=<YOUR_UNI>,domain=adcu.columbia.edu,uid=$(id -u),forceuid,gid=$(id -g),forcegid,file_mode=0755,dir_mode=0755,rw,noacl //locker-smb.engram.rc.zi.columbia.edu/axel-locker /home/$(id -un)/engram\ **Make sure to input your actual UNI
+  $ sudo /sbin/mount.cifs --verbose -o vers=2.1,user=<YOUR_UNI>,domain=adcu.columbia.edu,uid=$(id -u),forceuid,gid=$(id -g),forcegid,file_mode=0755,dir_mode=0755,rw,noacl //locker-smb.engram.rc.zi.columbia.edu/axel-locker /home/$(id -un)/engram<br/> **Make sure to input your actual UNI
 
 ### align_behavior_and_imaging.py
   * Align collected behavioral data of mouse to neuron calcium imaging data
