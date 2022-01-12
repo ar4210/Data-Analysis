@@ -26,8 +26,8 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   * Compared to original data analysis, mine uses floating point zeroes as opposed to integer zeroes.
   
 ### cnmfe_pipeline.py
-  * Main pipeline for motion correction and cnmfE analysis of 1p data. File can be run from the command line, and will take path to data as command line arguments. Can also run multiple files at once, and will ouput a pickle that can later be used for multisession registration across days.
-  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. For other file types, edit var_name_hdf5 variable.
+  * Main pipeline for motion correction and cnmfE analysis of 1p data. File can be run from the command line, and will take path to data as command line arguments. Can also run multiple files at once, and will ouput a [pickle](https://docs.python.org/3/library/pickle.html) that can later be used for multisession registration across days.
+  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. For other file types, edit var_name_hdf5 variable accordingly.
   * See [CaImAn github](https://github.com/flatironinstitute/CaImAn) for details on the package and full paper.
 
 ### multisession_registration_prep.py
@@ -40,7 +40,7 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
 
 
 ### How to install MATLAB on VM
-  - **I used MATLAB on the VM in order to run NoRMCorre Motion Correction, but have since switched to CaImAn NoRMCorre using Python.**
+  - **I used MATLAB on the VM in order to run NoRMCorre Motion Correction, but have since switched to CaImAn NoRMCorre which uses Python.**
   - This is a rough walkthrough about how to edit MATLAB scripts while working on a remote server.
   - Follow this guide (https://confluence.columbia.edu/confluence/display/zmbbi/Installing+MATLAB+on+your+Cortex+VM)
   1. Create a Mathworks account. (https://www.mathworks.com/mwaccount/register)<br/>
