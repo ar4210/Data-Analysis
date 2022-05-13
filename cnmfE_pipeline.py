@@ -1,15 +1,15 @@
 #!/usr/bin/env python
     
-    # sys.argv[0] = path to py file
-    # sys.argv[1] = path to mouse ID
-    # sys.argv[2:] = paths to recordings
+    # sys.argv[0] = path to .py file
+    # sys.argv[1] = path to mouse ID 
+    # sys.argv[2:] = paths to recordings (days / recording ID's), separated by spaces
     
     # EXAMPLE:
-    # ~$ python ar4210_data_analysis / CaImAn-master / aditya / cnmfE_pipeline.py 
-#        ~ / engram / Mouse / Inscopix_Data/wfC321       
-#             wfC321_2016_10_12 / recording_20161012_133611.hdf5 
-#             wfC321_2016_10_13 / recording_20161013_155120.hdf5 
-#             etc.
+    # ~$ python ar4210_data_analysis/CaImAn-master/aditya/cnmfE_pipeline.py 
+#        ~/engram/anole/Mouse/Inscopix_Data/wfC321       
+#            wfC321_2016_10_12/recording_20161012_133611.hdf5 
+#            wfC321_2016_10_13/recording_20161013_155120.hdf5 
+#            etc.
 
 
 import os
@@ -25,9 +25,9 @@ for index, file in enumerate(sys.argv[2:], 1):
     assert os.path.exists(f"{sys.argv[1]}/{file}"), "\033[91mFile does not exist. Check spelling and location.\033[0m"
     print(f"\033[92mFile {os.path.basename(file)} found. Moving on...\033[0m")
     
-new_dir = "engram/Mouse/New_Analysis_Pipeline_Test/Test_Data/Python_Scripts_and_Data" 
-os.chdir(new_dir)
-print(f"\nChanged working directory to: \n{new_dir}\n")
+# new_dir = "engram/anole/Mouse/New_Analysis_Pipeline_Test/Test_Data/Python_Scripts_and_Data" 
+# os.chdir(new_dir)
+# print(f"\nChanged working directory to: \n{new_dir}\n")
 
 
 import logging
@@ -83,6 +83,7 @@ def main(file):
     (cnmf.fit_file) See inside for details.
 
     Demo is also available as a jupyter notebook (see demo_pipeline_cnmfE.ipynb)
+    
     """
     
     start = time.time()
@@ -104,7 +105,7 @@ def main(file):
     
     if extension == ".hdf5":
         var_name_hdf5 = 'images'
-    elif extension == ".tif":
+    elif extension == ".tif" or extension == ".tiff":
         var_name_hdf5 = 'mov'
     else:
         print("\033[91mWARNING:\033[0m I haven't tried file types other than .hdf5 and .tif. If you would like to define the var_name_hdf5 parameter here, you may do so. Otherwise, press ENTER and it will default to its original value, 'mov'.")
@@ -216,8 +217,8 @@ def main(file):
     #                         gnb<-1: Don't return background
     nb_patch = 0        # number of background components (rank) per patch if gnb>0,
     #                     else it is set automatically
-    min_corr = .8       # min peak value from correlation image
-    min_pnr = 10        # min peak to noise ration from PNR image
+    min_corr = .9       # min peak value from correlation image
+    min_pnr = 5        # min peak to noise ration from PNR image
     ssub_B = 2          # additional downsampling factor in space for background
     ring_size_factor = 1.4  # radius of ring is gSiz*ring_size_factor
 
@@ -264,7 +265,7 @@ def main(file):
     ctime = now.strftime("%Y%m%d_%H%M%S")
     date = now.strftime("%Y%m%d")
     
-    LOGFILE = open("/home/ar4210/engram/Mouse/CNMFE_testing.txt", "a")
+    LOGFILE = open("/home/ar4210/engram/anole/Mouse/CNMFE_testing.txt", "a")
     LOGFILE.write(f"Beginning CNMFE on {mouse_id}, {fstem} now: {ctime}\n")
 
 # %% RUN CNMF ON PATCHES
