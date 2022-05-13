@@ -1,15 +1,19 @@
 # Data-Analysis
 Collection of python and ipynb scripts used for data analysis
 
-IF YOU DO NOT HAVE ANACONDA INSTALLED:
-  1. Log into ssh server using $ssh <your_uni>@<remote_server>
+Prerequisites:
+- Your own virtual machine (VM) using the Cortex Clusters in the Zuckerman Institute. If you are NOT using your own VM, skip the steps about accessing your remote server.
+- I did this on a 2015 macbook pro. Other macbook versions and linux OSes are probably supported.
+
+IF YOU DO NOT HAVE ANACONDA INSTALLED ON YOUR VM:
+  1. Log into your VM using $ssh <your_uni>@<remote_server>
   2. Check if conda is installing by typing in $bash and then $conda list. If you are getting an error, it likely means you do not have anaconda installed.
   3. In order to install anaconda on the remote server, navigate to the anaconda website and copy THE LINK for the linux download.
   4. In the ssh shell, enter wget <the_copied_link> and follow the prompts.
   5. Once the set up is complete, you can check if anaconda has installed by typing in $bash followed by $conda list. You should see a list of packages installed by anaconda.
 
   FOR ACCESSING JUPYTER NOTEBOOKS ON YOUR REMOTE SERVER FROM YOUR LOCAL MACHINE:
-  0. If on Windows machine, follow tutorial [here](https://itsfoss.com/install-bash-on-windows/) to use linux terminal on Windows.
+  0. If on Windows machine, follow tutorial [here](https://itsfoss.com/install-bash-on-windows/) to use linux terminal on Windows. I did this on my macbook (and I think any linux OS should be similar), but for Windows you will likely have to adapt each step for your OS / the windows terminal.
   1. While logged into your server, type in the following: $ jupyter notebook --no-browser --port=8080 --NotebookApp.iopub_data_rate_limit=1.0e10
   2. Open a new instance of terminal, i.e. one that is connected to your machine instead of the server, and enter the following: $ ssh -N -f -L localhost:8080:localhost:8080 <your_uni>@<remote_server>
       1. If you receive an error message saying the port is in use, or are otherwise unable to access it, try running $ pgrep ssh and $ killall ssh. This will log you out of all ssh entry points and you will have to log back in, but port 8080 should now be open.
@@ -17,7 +21,7 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   5. If successful, you should be able to see the files that are stored under your user in the remote server. You should also be able to run notebooks from here, which will execute on the remote clusters.
 
   FOR MOUNTING ENGRAM SHARES ON VM:<br/>
-  **NOTE: When rebooting the VM using 'sudo reboot' you will need to mount engram again. Execute command below to mount engram shares.**
+  **NOTE: Sometimes used memory will accumulate after using this pipeline, especially when the data processing is terminated prematurely or incorrectly. You can free up memory again by rebooting your VM using 'sudo reboot' in the terminal window. When rebooting the VM you will need to mount your engram again. Execute command below to mount engram shares.**
   
   $ sudo /sbin/mount.cifs --verbose -o vers=2.1,user=<YOUR_UNI>,domain=adcu.columbia.edu,uid=$(id -u),forceuid,gid=$(id -g),forcegid,file_mode=0755,dir_mode=0755,rw,noacl //locker-smb.engram.rc.zi.columbia.edu/axel-locker /home/$(id -un)/engram<br/> **Make sure to input your actual UNI**
 
@@ -27,7 +31,8 @@ IF YOU DO NOT HAVE ANACONDA INSTALLED:
   
 ### cnmfe_pipeline.py
   * Main pipeline for motion correction and cnmfE analysis of 1p data. File can be run from the command line, and will take path to data as command line arguments. Can also run multiple files at once, and will ouput a [pickle](https://docs.python.org/3/library/pickle.html) that can later be used for multisession registration across days.
-  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. For other file types, edit var_name_hdf5 variable accordingly.
+  * Works primarily with .hdf5 files, whose data is stored under an 'images' folder, but this can be modified by altering the 'var_name_hdf5' variable throughout the script. For other file types, edit var_name_hdf5 variable accordingly (default value = 'mov'. This should work with tiffs). 
+  * You can run this file either through jupyter notebooks by following the steps outlined above, or you can run it through the terminal by executing a command with the following format: **$ python path/to/cnmfe_pipeline.py path/to/data_directory file1.tif file2.tif file3.tif etc.**
   * See [CaImAn github](https://github.com/flatironinstitute/CaImAn) for details on the package and full paper.
 
 ### multisession_registration_prep.py
